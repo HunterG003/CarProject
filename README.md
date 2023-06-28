@@ -147,3 +147,33 @@ compiled_data_df['price'] = compiled_data_df['price'].astype(float)
 ```
 
 ## Creating the Database
+We decided to use sqlite to create our database to host the data. There is one main table called "listings" that held majority of our data and allowed us to query and retrieve everything that was needed.
+
+## The Flask App
+Now we had to get started on the flask app so we could build an API and a frontend dashboard to view the data. SQLAlchemy is how we accessed our databse from our flask app. 
+
+The first step was to get a homepage for the dashboard loaded and rendering. We used the ```render_template()``` function to load in our [index.html](./templates/index.html)
+
+Next we had to create a class of the table "listings" and to do so we used the following code:
+
+```python
+class Listing(db.Model):
+    __tablename__ = "listings"
+
+    id = db.Column(db.Integer, primary_key=True)
+    model = db.Column(db.String)
+    make = db.Column(db.String)
+    year = db.Column(db.Integer)
+    mileage = db.Column(db.Integer)
+    transmission = db.Column(db.String)
+    fuel_type = db.Column(db.String)
+    engine = db.Column(db.String)
+    body_type = db.Column(db.String)
+    vehicle_title = db.Column(db.String)
+    page_title = db.Column(db.String)
+    price = db.Column(db.Float)
+    sold_date = db.Column(db.DateTime)
+    url = db.Column(db.String)
+```
+
+Once all the basics were out of the way, it was time to build our routes for the api. 
