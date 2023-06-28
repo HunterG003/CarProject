@@ -37,18 +37,17 @@ class Listing(db.Model):
     def to_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
     
+if __name__ == '__main__':
+    app.run(debug=True)
+
+@app.route('/')
+def MainPage():
+    return render_template('index.html')
+    
 @app.route('/listings', methods=['GET'])
 def get_listings():
     listings = Listing.query.limit(5).all()  # Get the first 5 listings
     return jsonify([listing.to_dict() for listing in listings])
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-    
-@app.route('/')
-def MainPage():
-    return render_template('index.html')
 
 @app.route('/api/models')
 def ReturnModels():
