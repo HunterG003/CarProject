@@ -1,7 +1,5 @@
 # Used Car Project
 
-[Visualization Website](https://hunterg003.github.io/CarProject/)
-
 ### About
 Our goal is to obtain data from the sales of used cars...
 
